@@ -6,4 +6,4 @@ SQL/__pycache__/
 SQL/PySpark/__pycache__/
 file_manager_tkinter/actions/__pycache__/
 file_manager_tkinter/views/__pycache__/
-
+monitor_CPU_RAM_GPU/__pycache__/
