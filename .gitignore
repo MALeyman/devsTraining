@@ -4,3 +4,6 @@ requirements.txt
 SQL/bd/
 SQL/__pycache__/
 SQL/PySpark/__pycache__/
+file_manager_tkinter/actions/__pycache__/
+file_manager_tkinter/views/__pycache__/
+
