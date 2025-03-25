@@ -5,7 +5,7 @@
 """
 
 import psutil as pt
-
+import subprocess
 
 class Info_cpu():
     """Использование процессора и оперативной памяти."""
@@ -26,3 +26,26 @@ class Info_cpu():
     def ram_usage(self):
         """Считывает загрузку оперативной памяти."""
         return pt.virtual_memory()
+
+    def cpu_temperatures_info(self):
+        """Получает температуру процессора"""
+        try:
+            output = subprocess.check_output("sensors", shell=True).decode()
+            for line in output.split("\n"):
+                if "Core" in line or "Tdie" in line:
+                    print(line.strip())
+        except Exception as e:
+            print(f"Ошибка получения температуры CPU: {e}")
+
+
+    def cpu_temperature_info(self):
+        """Получает общую температуру процессора"""
+        try:
+            output = subprocess.check_output("sensors", shell=True).decode()
+            for line in output.split("\n"):
+                if "Package id" in line or "Tctl" in line:  # Ищем общую температуру
+                    # print(line.strip())  # Выводим строку с температурой
+                    return float(line.split("+")[1].split("°C")[0].strip())  # Возвращаем числовое значение
+        except Exception as e:
+            print(f"Ошибка получения температуры CPU: {e}")
+            return None
