@@ -1,0 +1,11 @@
+path: /home/maksim/develops/python/devsTraining/zala_task/dataset/5_dataset_full/ 
+train: images/train         # Папка с тренировочными изображениями
+val: images/val              # Папка с валидационными изображениями
+test: images/test            # (опционально) Папка с тестовыми изображениями
+
+nc: 10  # Количество классов (укажите ваше число классов)
+names: ['building', 'cable-tower', 'cultivation-mesh-cage', 'landslide', 'pool', 'prefabricated-house', 'quarry', 'ship', 'vehicle', 'well']
+
+
+
+
