@@ -1,5 +1,5 @@
 #path: /home/maksim/develops/python/devsTraining/zala_task/dataset/5_dataset_full/ 
-path: /home/maksim/develops/python/devsTraining/zala_task/dataset/dataset2/dataset_full4/
+path: /home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_DOTA/dataset_split/
 train: images/train         # Папка с тренировочными изображениями
 val: images/val              # Папка с валидационными изображениями
 test: images/test            # (опционально) Папка с тестовыми изображениями
