@@ -22,8 +22,8 @@ zala_task/4_datasets_augmented/
 zala_task/3_dataset_split/
 zala_task/5_dataset_full/
 zala_task/5_datasets_copy/
-
 zala_task/video/
 zala_task/models/
 DeepLearning/
 ssd_pytorch/
+zala_task/models_custom/
