@@ -148,7 +148,7 @@ def load_image(index):
 def redraw():
     canvas.delete("box")
 
-    # === Нарисовать сетку ===
+    # =======    Нарисовать сетку 
     grid_spacing = 100  # Размер клетки сетки в пикселях
     w_img, h_img = img.size
 
@@ -157,7 +157,7 @@ def redraw():
     for y in range(0, h_img, grid_spacing):
         canvas.create_line(0, y, w_img, y, fill="gray", dash=(2, 4), tags="box")
 
-    # === Нарисовать все текущие боксы ===
+    # ======   Нарисовать все текущие боксы
     for cls, x1, y1, x2, y2 in boxes:
         canvas.create_rectangle(x1, y1, x2, y2, outline="green", width=2, tags="box")
         canvas.create_text(x1 + 4, y1 - 10, text=str(cls), anchor="nw",
@@ -247,7 +247,7 @@ def skip_image():
     current_index += 1
     load_image(current_index)
 
-# === Привязка событий ===
+# ==========      Привязка событий
 canvas.bind("<Button-1>", on_mouse_down)
 canvas.bind("<B1-Motion>", on_mouse_move)
 canvas.bind("<ButtonRelease-1>", on_mouse_up)
