@@ -20,7 +20,7 @@ __deployment_yolo.ipynb__  -  Экспорт модели в ONNX.
 
 __Презентация.odp__  -  Презентация.  
 
-[Модель](https://leimansite.pythonanywhere.com/detection2/?model=yolo) - детекции объектов на аэрофотоснимках.
+На сайте: [модель](https://leimansite.pythonanywhere.com/detection2/?model=yolo) - детекции объектов на аэрофотоснимках.
 
 
 ![image](https://github.com/user-attachments/assets/892715d7-affe-4f97-9ad4-650c749eeafe)
