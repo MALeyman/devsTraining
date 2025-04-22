@@ -1,5 +1,8 @@
 
 ### ПРИВЕТСТВУЮ 👋
+
+На сайте: [модель](https://leimansite.pythonanywhere.com/detection2/?model=yolo) - детекции объектов на аэрофотоснимках.  
+
 __01_creation_boxes.py__   -  Разметка изображений.  
 
 __1_dataset_processing.ipynb__  -  Обработка.  
@@ -19,8 +22,6 @@ __5_detection.ipynb__  -  Детекция объектов на видео.
 __deployment_yolo.ipynb__  -  Экспорт модели в ONNX.  
 
 __Презентация.odp__  -  Презентация.  
-
-На сайте: [модель](https://leimansite.pythonanywhere.com/detection2/?model=yolo) - детекции объектов на аэрофотоснимках.
 
 
 ![image](https://github.com/user-attachments/assets/892715d7-affe-4f97-9ad4-650c749eeafe)
