@@ -6,10 +6,13 @@
 """  
     ===== Горячие клавиши: =====
 
-    "s"         # Сохранение
-    "m"         # Выбор класса
-    "q"         # Выход
-    "d"         # Пропустить изображение
+    m       # Выбор класса
+    q       # Выход
+    d       # Пропустить изображение
+
+    s       # сохранять текущий кадр в датасет train/
+    a       # сохранять текущий кадр в датасет test/
+    z       # отменять последнее изменение (undo) — возврат «один бокс назад» 
 
 """
 
@@ -28,26 +31,85 @@ import random
 # Получаем текущую рабочую папку  
 current_directory = os.getcwd()  
 
-# /home/maksim/develops/python/dataset/dataset_DOTA/dataset_DOTA/images_jpeg/
-# /home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_DOTA/dataset_DOTA/images_jpeg/
 
 path_dataset = os.path.join(current_directory, "devsTraining/zala_task/dataset")
 
-image_2 = 'dataset_DOTA/dataset_DOTA/images_jpeg/'   
+# image_2 = 'dataset_VEDAI/image_original/'  
+image_2 = 'dataset_DOTA/images_jpeg/'
+image_2 =  "dataset_mobileNet/dataset_0/image/"
+
 images_path_1 = os.path.join(path_dataset, image_2) 
 
-labels_2 = 'dataset_DOTA/dataset_DOTA/cleaned_labels/'   
+# labels_2 = 'dataset_UAVOD/datasets_original/target_yolo/'   
+labels_2 = 'dataset_DOTA/cleaned_labels_2/' 
+labels_2 = 'dataset_mobileNet/dataset_0/target/' 
+
 labels_path = os.path.join(path_dataset, labels_2)  
 
+images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/image_original/"
+labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/"
+
+
+
+
 print(images_path_1)
+
+image_3 = 'custom_dataset/'   
+images_path_out = os.path.join(path_dataset, image_3, "image") 
+
+labels_3 = 'custom_dataset/'   
+labels_path_out = os.path.join(path_dataset, labels_3, "target")  
+
+print(images_path_out)
+print(labels_path_out)
+
 
 #  Папки 
 images_path = images_path_1
 labels_path = labels_path
-output_images_dir = "output_images"
-output_labels_dir = "output_labels"
+
+
+images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/image_original/"
+labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/"
+
+
+images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_DOTA/set/2_image/"
+labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_DOTA/set/2_target/"
+
+images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/set/1_image/"
+labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/set/1_target/"
+
+# images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_UAVOD/set/1_image/"
+# labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_UAVOD/set/1_target/"
+
+images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/image_original/"
+labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/image_original/"
+
+
+output_images_dir = images_path_out
+output_labels_dir = labels_path_out
+
+# output_images_dir = images_path
+# output_labels_dir = labels_path
+
 os.makedirs(output_images_dir, exist_ok=True)
 os.makedirs(output_labels_dir, exist_ok=True)
+
+#  каталоги назначения  
+train_img_dir  = os.path.join(output_images_dir, "train")
+train_lbl_dir  = os.path.join(output_labels_dir, "train")
+test_img_dir   = os.path.join(output_images_dir, "test")
+test_lbl_dir   = os.path.join(output_labels_dir, "test")
+
+for d in (train_img_dir, train_lbl_dir, test_img_dir, test_lbl_dir):
+    os.makedirs(d, exist_ok=True)
+
+
+
+#  стек истории для undo  
+history = []           # хранит tuple("add"/"del", box)
+
+
 
 #  Переменные 
 image_files = sorted(glob.glob(os.path.join(images_path, "*.jpg")))
@@ -64,17 +126,6 @@ tk_img = None
 #  Окно
 root = tk.Tk()
 root.title("YOLO Аннотации")
-
-# canvas = Canvas(root, cursor="cross")
-# canvas.pack(fill=tk.BOTH, expand=True)
-
-# #  Скроллинг 
-# x_scroll = tk.Scrollbar(root, orient=tk.HORIZONTAL, command=canvas.xview)
-# y_scroll = tk.Scrollbar(root, orient=tk.VERTICAL, command=canvas.yview)
-# canvas.configure(xscrollcommand=x_scroll.set, yscrollcommand=y_scroll.set)
-# x_scroll.pack(side=tk.BOTTOM, fill=tk.X)
-# y_scroll.pack(side=tk.RIGHT, fill=tk.Y)
-
 
 frame = tk.Frame(root)
 frame.pack(fill=tk.BOTH, expand=True)
@@ -134,14 +185,10 @@ def load_image(index):
                 x2 = int((x + w / 2) * w_img)
                 y2 = int((y + h / 2) * h_img)
                 boxes.append((int(cls), x1, y1, x2, y2))
-    redraw()
+    else:
+        print("Файл аннотации не найден — начнём разметку с нуля.")
 
-# def redraw():
-#     canvas.delete("box")
-#     for cls, x1, y1, x2, y2 in boxes:
-#         canvas.create_rectangle(x1, y1, x2, y2, outline="green", width=2, tags="box")
-#         canvas.create_text(x1 + 4, y1 - 10, text=str(cls), anchor="nw",
-#                    fill="green", font=("Arial", 14, "bold"), tags="box")
+    redraw()
 
 
 
@@ -160,7 +207,7 @@ def redraw():
     # ===========   Нарисовать все текущие боксы
     for cls, x1, y1, x2, y2 in boxes:
         canvas.create_rectangle(x1, y1, x2, y2, outline="green", width=2, tags="box")
-        canvas.create_text(x1 + 4, y1 - 10, text=str(cls), anchor="nw",
+        canvas.create_text(x1 + 4, y1 - 17, text=str(cls), anchor="nw",
                            fill="green", font=("Arial", 14, "bold"), tags="box")
 
 
@@ -192,8 +239,23 @@ def on_mouse_up(event):
     x2, y2 = int(max(start_x, end_x)), int(max(start_y, end_y))
     boxes.append((current_class_id, x1, y1, x2, y2))
     new_boxes.append((current_class_id, x1, y1, x2, y2))
+    history.append(("add", boxes[-1])) 
     redraw()
     current_rect = None
+
+# undo-функция 
+def undo_last(event=None):
+    if not history:
+        print("История пуста.")
+        return
+    action, box = history.pop()
+    if action == "add":
+        # убираем последнюю добавленную
+        boxes.pop()                 # всегда последняя
+    else:  # "del"
+        boxes.append(box)           # возвращаем удалённую
+    redraw()
+
 
 def on_right_click(event):
     x = canvas.canvasx(event.x)
@@ -201,7 +263,8 @@ def on_right_click(event):
     for i in range(len(boxes) - 1, -1, -1):
         cls, x1, y1, x2, y2 = boxes[i]
         if x1 <= x <= x2 and y1 <= y <= y2:
-            boxes.pop(i)
+            removed = boxes.pop(i)
+            history.append(("del", removed)) 
             redraw()
             break
 
@@ -212,22 +275,6 @@ def yolo_format(x1, y1, x2, y2, cls):
     w = abs(x2 - x1) / w_img
     h = abs(y2 - y1) / h_img
     return f"{cls} {x_center:.6f} {y_center:.6f} {w:.6f} {h:.6f}"
-
-def save_and_next():
-    global current_index
-    if img:
-        img_file = os.path.basename(image_files[current_index])
-        img.save(os.path.join(output_images_dir, img_file))
-
-        label_file = os.path.splitext(img_file)[0] + ".txt"
-        with open(os.path.join(output_labels_dir, label_file), "w") as f:
-            for cls, x1, y1, x2, y2 in boxes:
-                f.write(yolo_format(x1, y1, x2, y2, cls) + "\n")
-        print(f"Сохранено: {img_file}")
-
-    current_index += 1
-    load_image(current_index)
-
 
 def change_class_id():
     global current_class_id
@@ -240,6 +287,25 @@ def change_class_id():
             print("Некорректный ввод.")
 
 
+#  универсальный save() 
+def save_current(to_train=True):
+    if not img:
+        return
+    img_file   = os.path.basename(image_files[current_index])
+    lbl_file   = os.path.splitext(img_file)[0] + ".txt"
+
+    if to_train:
+        img_dir, lbl_dir = train_img_dir, train_lbl_dir
+    else:
+        img_dir, lbl_dir = test_img_dir, test_lbl_dir
+
+    # сохранение
+    img.save(os.path.join(img_dir, img_file))
+    with open(os.path.join(lbl_dir, lbl_file), "w") as f:
+        for cls, x1, y1, x2, y2 in boxes:
+            f.write(yolo_format(x1, y1, x2, y2, cls) + "\n")
+
+    print(f"Сохранено в {'train' if to_train else 'test'}: {img_file}")
 
 
 def skip_image():
@@ -247,16 +313,33 @@ def skip_image():
     current_index += 1
     load_image(current_index)
 
+def save_and_next(to_train=True, event=None):
+    global current_index
+    if not img:        # если ещё ничего не загружено
+        return
+    # 1) сохраняем
+    save_current(to_train)
+    # 2) увеличиваем индекс
+    current_index += 1
+    # 3) загружаем следующую картинку
+    load_image(current_index)
+
+
 #   Привязка событий
 canvas.bind("<Button-1>", on_mouse_down)
 canvas.bind("<B1-Motion>", on_mouse_move)
 canvas.bind("<ButtonRelease-1>", on_mouse_up)
 canvas.bind("<Button-3>", on_right_click)
 
-root.bind("s", lambda e: save_and_next())   # Сохранение
+# биндинги клавиш 
 root.bind("m", lambda e: change_class_id()) # Выбор класса
 root.bind("q", lambda e: root.quit())       # Выход
 root.bind("d", lambda e: skip_image())      # Пропустить изображение
+
+root.bind("s", lambda e: save_and_next(True))   # в train/
+root.bind("a", lambda e: save_and_next(False))  # в test/
+root.bind("z", undo_last)        # Undo
+
 
 load_image(current_index)
 root.mainloop()
