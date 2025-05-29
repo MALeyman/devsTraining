@@ -34,25 +34,19 @@ current_directory = os.getcwd()
 
 path_dataset = os.path.join(current_directory, "devsTraining/zala_task/dataset")
 
-# image_2 = 'dataset_VEDAI/image_original/'  
-image_2 = 'dataset_DOTA/images_jpeg/'
-image_2 =  "dataset_mobileNet/dataset_0/image/"
+# # image_2 = 'dataset_VEDAI/image_original/'  
+# image_2 = 'dataset_DOTA/images_jpeg/'
+# image_2 =  "dataset_mobileNet/dataset_0/image/"
 
-images_path_1 = os.path.join(path_dataset, image_2) 
+# images_path_1 = os.path.join(path_dataset, image_2) 
 
-# labels_2 = 'dataset_UAVOD/datasets_original/target_yolo/'   
-labels_2 = 'dataset_DOTA/cleaned_labels_2/' 
-labels_2 = 'dataset_mobileNet/dataset_0/target/' 
+# # labels_2 = 'dataset_UAVOD/datasets_original/target_yolo/'   
+# labels_2 = 'dataset_DOTA/cleaned_labels_2/' 
+# labels_2 = 'dataset_mobileNet/dataset_0/target/' 
 
-labels_path = os.path.join(path_dataset, labels_2)  
+# labels_path = os.path.join(path_dataset, labels_2)  
 
-images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/image_original/"
-labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/"
-
-
-
-
-print(images_path_1)
+# print(images_path_1)
 
 image_3 = 'custom_dataset/'   
 images_path_out = os.path.join(path_dataset, image_3, "image") 
@@ -65,26 +59,10 @@ print(labels_path_out)
 
 
 #  Папки 
-images_path = images_path_1
-labels_path = labels_path
+images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_DOTA/images_jpeg/"
+labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_DOTA/cleaned_labels_2/"
 
-
-images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/image_original/"
-labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/"
-
-
-images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_DOTA/set/2_image/"
-labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_DOTA/set/2_target/"
-
-images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/set/1_image/"
-labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/set/1_target/"
-
-# images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_UAVOD/set/1_image/"
-# labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_UAVOD/set/1_target/"
-
-images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/image_original/"
-labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_VEDAI/image_original/"
-
+print(images_path)
 
 output_images_dir = images_path_out
 output_labels_dir = labels_path_out
