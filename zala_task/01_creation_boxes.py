@@ -59,9 +59,18 @@ print(labels_path_out)
 
 
 #  Папки 
-images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_DOTA/images_jpeg/"
-labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_DOTA/cleaned_labels_2/"
+images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_DOTA/set/image/train/"
+labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_DOTA/set/target/train/"
 
+# images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_full_1/images/train/"
+# labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_full_1/labels/train/"
+
+# images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/custom_dataset/mix_out/images/"
+# labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/custom_dataset/mix_out/labels/"
+
+
+images_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_full_1/images/val/"
+labels_path="/home/maksim/develops/python/devsTraining/zala_task/dataset/dataset_full_1/labels/val/"
 print(images_path)
 
 output_images_dir = images_path_out
@@ -79,14 +88,16 @@ train_lbl_dir  = os.path.join(output_labels_dir, "train")
 test_img_dir   = os.path.join(output_images_dir, "test")
 test_lbl_dir   = os.path.join(output_labels_dir, "test")
 
+# #  каталоги назначения  
+# train_img_dir  = images_path
+# train_lbl_dir  = labels_path
+
 for d in (train_img_dir, train_lbl_dir, test_img_dir, test_lbl_dir):
     os.makedirs(d, exist_ok=True)
 
 
-
 #  стек истории для undo  
 history = []           # хранит tuple("add"/"del", box)
-
 
 
 #  Переменные 
@@ -183,10 +194,33 @@ def redraw():
         canvas.create_line(0, y, w_img, y, fill="gray", dash=(2, 4), tags="box")
 
     # ===========   Нарисовать все текущие боксы
+        CLASS_COLORS = {
+            0: "blue",
+            1: "green",
+            2: "red",
+            3: "orange",
+            4: "purple",
+            5: "red",
+            6: "red",
+            7: "red",
+        }
+        DEFAULT_COLOR = "gray"
+
     for cls, x1, y1, x2, y2 in boxes:
-        canvas.create_rectangle(x1, y1, x2, y2, outline="green", width=2, tags="box")
+        color = CLASS_COLORS.get(cls, DEFAULT_COLOR)
+        canvas.create_rectangle(x1, y1, x2, y2, outline=color, width=2, tags="box")
         canvas.create_text(x1 + 4, y1 - 17, text=str(cls), anchor="nw",
-                           fill="green", font=("Arial", 14, "bold"), tags="box")
+                           fill=color, font=("Arial", 14, "bold"), tags="box")
+
+    # for cls, x1, y1, x2, y2 in boxes:
+    #     color = "blue" if cls == 0 else "green"
+    #     canvas.create_rectangle(x1, y1, x2, y2, outline=color, width=2, tags="box")
+    #     canvas.create_text(x1 + 4, y1 - 17, text=str(cls), anchor="nw",
+    #                     fill=color, font=("Arial", 14, "bold"), tags="box")
+
+        # canvas.create_rectangle(x1, y1, x2, y2, outline="green", width=2, tags="box")
+        # canvas.create_text(x1 + 4, y1 - 17, text=str(cls), anchor="nw",
+        #                    fill="green", font=("Arial", 14, "bold"), tags="box")
 
 
 
