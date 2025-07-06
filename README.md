@@ -7,9 +7,9 @@
 - [Использование](#Использование)  
 - [Обучение моделей](#Обучение-моделей)  
 - [Запуск проекта на Gradio](#Запуск-проекта-на-Gradio)  
-- [Веб-приложение модели](#Веб-приложение-модели)  
-- [To do](#to-do)  
-- [Команда проекта](#команда-проекта)  
+- [Веб-приложения модели](#Веб-приложения-модели)  
+- [Приложение на Gradio](#Приложениек-на-Gradio)  
+- [Приложение на PythonAnywhere](#Приложение-на-PythonAnywhere)  
 ------------------------  
 
 ## Технологии  
@@ -60,12 +60,12 @@ python app.py
 ## Веб-приложения модели  
 
 
-### (Запуск на Gradio)[https://huggingface.co/spaces/makc-mon173/projects]  
+### [Приложение на Gradio](https://huggingface.co/spaces/makc-mon173/projects)
 
 ![image](https://github.com/user-attachments/assets/4b901054-cb5a-4d20-b029-7cdc3c4c8fd5)  
 
 
-### (Запуск на  PythonAnywhere)[https://leimansite.pythonanywhere.com/segmentation/]  
+### [Приложение на PythonAnywhere](https://leimansite.pythonanywhere.com/segmentation/) 
 
 ![image](https://github.com/user-attachments/assets/231067c8-4436-4cae-bd0d-fccadff70565)  
 
