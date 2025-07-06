@@ -60,12 +60,12 @@ python app.py
 ## Веб-приложения модели  
 
 
-### [Приложение на Gradio](https://huggingface.co/spaces/makc-mon173/projects)
+### [<u>Приложение на Gradio</u>](https://huggingface.co/spaces/makc-mon173/projects)
 
 ![image](https://github.com/user-attachments/assets/4b901054-cb5a-4d20-b029-7cdc3c4c8fd5)  
 
 
-### [Приложение на PythonAnywhere](https://leimansite.pythonanywhere.com/segmentation/) 
+### [<u>Приложение на PythonAnywhere</u>](https://leimansite.pythonanywhere.com/segmentation/) 
 
 ![image](https://github.com/user-attachments/assets/231067c8-4436-4cae-bd0d-fccadff70565)  
 
