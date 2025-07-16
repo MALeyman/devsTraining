@@ -23,7 +23,6 @@
 - [Onnx](https://onnx.ai/)
 - [OpenCV](https://opencv.org/)
 - [Gradio](https://www.gradio.app/)  
-- [SMP](https://smp.readthedocs.io/en/latest/models.html)
 - [pythonanywhere](https://www.pythonanywhere.com/)
 -------------------------------------------
 
@@ -67,12 +66,14 @@ python app.py
 
 ### [<u>Приложение на Gradio</u>](https://huggingface.co/spaces/makc-mon173/projects)
 
-![image](https://github.com/user-attachments/assets/4b901054-cb5a-4d20-b029-7cdc3c4c8fd5)  
+<img width="1501" height="854" alt="image" src="https://github.com/user-attachments/assets/eb0e2210-07b8-4789-a471-87019d2c1ae1" />
 
 
-### [<u>Приложение на PythonAnywhere</u>](https://leimansite.pythonanywhere.com/segmentation/) 
 
-![image](https://github.com/user-attachments/assets/231067c8-4436-4cae-bd0d-fccadff70565)  
+### [<u>Приложение на PythonAnywhere</u>](https://leimansite.pythonanywhere.com/detection2/?model=yolo) 
+
+<img width="1367" height="805" alt="image" src="https://github.com/user-attachments/assets/dd42a6f2-2796-4e9a-a500-20fa635137ce" />
+ 
 
 
 
