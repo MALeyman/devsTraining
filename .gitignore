@@ -3,6 +3,7 @@
 requirements.txt
 SQL/bd/
 SQL/__pycache__/
+zala_task/2_visualize_img.ipynb
 SQL/PySpark/__pycache__/
 file_manager_tkinter/actions/__pycache__/
 file_manager_tkinter/views/__pycache__/
@@ -35,4 +36,5 @@ zala_task/fasterrcnn_model.pth
 zala_task/2_visualize_img.ipynb
 zala_task/5_detection.ipynb
 zala_task/35_task_2_MobileNetV3.ipynb
-zala_task/2_visualize_img.ipynb
+zala_task/output_detected.jpg
+monitor_CPU_RAM_GPU/.idea/
