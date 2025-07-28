@@ -9,8 +9,8 @@
 ## Содержание  
 
 - [Детекция](https://github.com/MALeyman/devsTraining/tree/main/zala_task) аэрофотоснимков (задание ZALA)
-- [CV](https://github.com/MALeyman/devsTraining/tree/main/CV)  
-- [VAE GAN](https://github.com/MALeyman/devsTraining/blob/main/CV/vae_gan.ipynb) преобразование изображения в другое (Лица людей)
+- [CV](https://github.com/MALeyman/devsTraining/tree/main/CV) - Компьютерное зрение
+- [VAE GAN](https://github.com/MALeyman/devsTraining/blob/main/CV/vae_gan.ipynb) - преобразование изображения в другое (Лица людей)
 - [Запуск проекта на Gradio](#Запуск-проекта-на-Gradio)  
 - [Веб-приложения модели](#Веб-приложения-модели)  
 - [Приложение на Gradio](#Приложениек-на-Gradio)  
