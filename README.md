@@ -11,10 +11,7 @@
 - [Детекция](https://github.com/MALeyman/devsTraining/tree/main/zala_task) аэрофотоснимков (задание ZALA)
 - [CV](https://github.com/MALeyman/devsTraining/tree/main/CV) - Компьютерное зрение
 - [VAE GAN](https://github.com/MALeyman/devsTraining/blob/main/CV/vae_gan.ipynb) - преобразование изображения в другое (Лица людей)
-- [Запуск проекта на Gradio](#Запуск-проекта-на-Gradio)  
-- [Веб-приложения модели](#Веб-приложения-модели)  
-- [Приложение на Gradio](#Приложениек-на-Gradio)  
-- [Приложение на PythonAnywhere](#Приложение-на-PythonAnywhere)  
+
 ------------------------  
 
 ## Технологии  
@@ -26,57 +23,10 @@
 - [pythonanywhere](https://www.pythonanywhere.com/)
 -------------------------------------------
 
-## Использование  
 
-### Обучение моделей
-
-В каталоге проекта выполнить команду  
-
-```sh
-python -m venv .myenv   
-source .myenv/bin/activate   
-pip install -r requirements.txt  
-```
-
-
-### Запуск проекта на Gradio:  
-
-В каталоге проекта выполнить команду
-
-```sh
-python -m venv .myenv   
-source .myenv/bin/activate   
-cd gradio_projects  
-pip install -r requirements.txt
-```
-
-Запуск Gradio  
-
-```sh
-source .myenv/bin/activate 
-cd gradio_projects 
-python app.py
-```
 
 
 -----------------------------  
-
-## Веб-приложения модели  
-
-
-### [<u>Приложение на Gradio</u>](https://huggingface.co/spaces/makc-mon173/projects)
-
-<img width="1501" height="854" alt="image" src="https://github.com/user-attachments/assets/eb0e2210-07b8-4789-a471-87019d2c1ae1" />
-
-
-
-### [<u>Приложение на PythonAnywhere</u>](https://leimansite.pythonanywhere.com/detection2/?model=yolo) 
-
-<img width="1367" height="805" alt="image" src="https://github.com/user-attachments/assets/dd42a6f2-2796-4e9a-a500-20fa635137ce" />
- 
-
-
-
 
 
 
